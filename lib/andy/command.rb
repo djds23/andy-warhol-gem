@@ -1,10 +1,11 @@
 class Command
   attr_accessor :command,
-                :group
+                :args
 
   def initialize(text)
     command_array = text.split
-    @command, @group = command_array
+    @command = command_array[0]
+    @args = command_array[1..-1]
   end
 
   def process!
