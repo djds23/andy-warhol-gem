@@ -7,3 +7,4 @@ describe Command do
     expect(subject.group).to eq '1'
   end
 end
+

@@ -21,11 +21,12 @@ class QueueBot < Sinatra::Base
 
   post '/api/v1/queue/?' do
     text = params['text']
+    command = Command.new(text)
   end
 
   def get_topic
     response = @client.channel_info(channel: '#deploys')
-    Command.new(response.channel.topic.value)
+    response.channel.topic.value
   end
 end
 

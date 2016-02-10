@@ -5,7 +5,14 @@ class Command
   def initialize(text)
     command_array = text.split
     @command, @group = command_array
+  end
 
-    self
+  def process!
+    case @command
+    when 'add'
+    when 'boot'
+    when 'nuke'
+    end
   end
 end
+
