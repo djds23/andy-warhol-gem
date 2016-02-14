@@ -3,7 +3,7 @@ require 'rack/contrib'
 require 'sinatra'
 require 'json'
 
-require 'andy/command'
+require 'andy/parse'
 
 class QueueBot < Sinatra::Base
 
