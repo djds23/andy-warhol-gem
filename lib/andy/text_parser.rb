@@ -1,4 +1,4 @@
-class Parse
+class TextParser
   attr_accessor :command,
                 :args
 

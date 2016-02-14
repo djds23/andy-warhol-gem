@@ -3,11 +3,15 @@ require 'rack/contrib'
 require 'sinatra'
 require 'json'
 
-require 'andy/parse'
+require 'andy/parsers/text_parser'
+require 'andy/parsers/topic_parser'
+
+require 'andy/commands/add'
+require 'andy/commands/boot'
+require 'andy/commands/nuke'
 
 class QueueBot < Sinatra::Base
 
-  @client = Slack::Web::Client.new
 
   before '/*' do
     if params['token'] != ENV['SLACK_TOKEN']
@@ -21,12 +25,7 @@ class QueueBot < Sinatra::Base
 
   post '/api/v1/queue/?' do
     text = params['text']
-    command = Command.new(text)
-  end
-
-  def get_topic
-    response = @client.channel_info(channel: '#deploys')
-    response.channel.topic.value
+    parser = TextParser.new(text)
   end
 end
 
